@@ -1,0 +1,108 @@
+<!-- version 1.00 -->
+<!-- author dymo -->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE>Welcome to the library</TITLE>
+    <link href="client.css" rel="stylesheet" type="text/css">
+    <script>
+        function showContent(link) {
+            var cont = document.getElementById('contentBody');
+            var loading = document.getElementById('loading');
+
+            cont.innerHTML = loading.innerHTML;
+
+            // Creating ajax-object
+            var http = createRequestObject();
+            if(http) {
+
+                // Initiates the loading of the page
+                http.open('get', link);
+
+                // Assign an asynchronous event handler
+                http.onreadystatechange = function() {
+                    if(http.readyState == 4) {
+
+                        // assigns content
+                        cont.innerHTML = http.responseText;
+                    }
+                }
+                http.send(null);
+            } else {
+
+                // If ajax-object can not create a redirect on address
+                document.location = link;
+            }
+        }
+
+        // Creating ajax-object
+        function createRequestObject() {
+            try {
+                return new XMLHttpRequest()
+            } catch(e) {
+                try {
+                    return new ActiveXObject('Msxml2.XMLHTTP')
+                } catch(e) {
+                    try {
+                        return new ActiveXObject('Microsoft.XMLHTTP')
+                    } catch(e) {
+                        return null;
+                    }
+                }
+            }
+        }
+    </script>
+</HEAD>
+
+<H2>Register a new account</H2>
+
+<FORM ACTION="/library/test/controller">
+    <BR>
+    <TABLE>
+        <TR>
+            <TD><H4> Surname: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="surname" VALUE=""></TD>
+        </TR>
+        <TR>
+            <TD><H4> Name: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="name" VALUE=""></TD>
+        </TR>
+        <TR>
+            <TD><H4> Year of Birth: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="year" VALUE=""></TD>
+        </TR>
+        <TR>
+            <TD><H4> E-mail: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="email" VALUE=""></TD>
+        </TR>
+        <TR>
+            <TD><H4> Password: </H4></TD>
+            <TD><INPUT TYPE="PASSWORD" NAME="password" VALUE=""></TD>
+        </TR>
+        <TR>
+            <TD><H4> Confirm password: </H4></TD>
+            <TD><INPUT TYPE="PASSWORD" NAME="password1" VALUE=""></TD>
+        </TR>
+    </TABLE>
+    <CENTER>
+        <INPUT TYPE="CHECKBOX" NAME="takeRule">I agree with the rules of Library Policy
+        <form>
+            <input onclick="showContent('rules.html')" type="button" value="Show rules">
+        </form>
+
+        <div id="contentBody">
+        </div>
+
+        <div id="loading" style="display: none">
+            Loading ...
+        </div>
+
+        <H3>If you have entered the correct information will be taken to the main page</H3>
+        <H3>If the assumption errors you stay on the login page to another trying to register</H3>
+        <INPUT TYPE="SUBMIT" name="registration" VALUE="Sign up" class="b1">
+    </CENTER>
+</FORM>
+
+</BODY>
+</HTML>

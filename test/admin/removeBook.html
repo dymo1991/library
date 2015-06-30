@@ -1,0 +1,50 @@
+<!-- version 1.00 -->
+<!-- author dymo -->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE>Page of library administrator</TITLE>
+    <link href="admin.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<H1>Page of library administrator</H1>
+<H2>Remove the book</H2>
+<H3>Enter the ID book O R the author, title and year</H3>
+
+<FORM ACTION='/library/test/admin/adminController'>                 
+    <BR>
+    <TABLE>
+        <TR>
+            <TD><H4>ID: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="id" VALUE=""></TD>
+        </TR>
+        <TR>
+        </TR>
+        <TR>
+        </TR>
+        <TR>
+        </TR>
+        <TR>
+            <TD><H4>Author: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="author" VALUE=""></TD>
+        </TR>
+        <TR>
+            <TD><H4>Title: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="title" VALUE=""></TD>
+        </TR>
+        <TR>
+            <TD><H4>Year: </H4></TD>
+            <TD><INPUT TYPE="TEXT" NAME="year" VALUE=""></TD>
+        </TR>
+    </TABLE>
+    <CENTER>
+        <H3>The book will be removed from the library automatically after you click "Delete"</H3>
+        <H3>The book, which has been already ordered a reader and in the single copy will not be removed</H3>
+        <INPUT TYPE="SUBMIT" NAME="removeBook" VALUE="Delete" class="b1">
+        <INPUT TYPE="SUBMIT" NAME="controlAdmin" VALUE="Back to Control" class="b1">
+    </CENTER>
+</FORM>
+
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+
+    <display-name>Welcome to Tomcat</display-name>
+    <description>
+        Welcome to Tomcat
+    </description>
+
+    <!-- ControllerServlet -->
+    <servlet>
+        <servlet-name>controller</servlet-name>
+        <servlet-class>dymo.contr.Controller</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>controller</servlet-name>
+        <url-pattern>/test/controller</url-pattern>
+    </servlet-mapping>
+
+    <!-- AdminControllerServlet -->
+    <servlet>
+        <servlet-name>adminController</servlet-name>
+        <servlet-class>dymo.contr.AdminController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminController</servlet-name>
+        <url-pattern>/test/admin/adminController</url-pattern>
+    </servlet-mapping>
+
+    <!-- AuthenticateServlet -->
+    <servlet>
+        <servlet-name>authenticate</servlet-name>
+        <servlet-class>dymo.auth.AuthenticateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>authenticate</servlet-name>
+        <url-pattern>/test/authenticate</url-pattern>
+    </servlet-mapping>
+
+    <!-- LogoutServlet -->
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>dymo.auth.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/test/logout</url-pattern>
+    </servlet-mapping>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/WEB-INF/tlds/dymo.tld</taglib-uri>
+            <taglib-location>/WEB-INF/tlds/dymo.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <!-- LogFilter -->
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>dymo.filter.LogFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+
+    <!-- BlockFilter -->
+     <filter>
+        <filter-name>BlockFilter</filter-name>
+        <filter-class>dymo.filter.BlockFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>BlockFilter</filter-name>
+        <url-pattern>/test/admin/addBook.jsp</url-pattern>
+        <url-pattern>/test/admin/controlReader.jsp</url-pattern>
+        <url-pattern>/test/admin/reviewOrder.jsp</url-pattern>
+    </filter-mapping>
+
+</web-app>
